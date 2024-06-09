@@ -13,8 +13,11 @@ This project aims to have a usable, updatable installation of the [revive adserv
 
 # Config
 ## Environment
+Create a `.env` file and set the value for these variables.
+
 * `DB_HOST=localhost`
 * `DB_PORT=3306`
 * `DB_NAME=revive_400`
 * `DB_USERNAME=root`
 * `DB_PASSWORD=`
+* `MYSQL_ROOT_PASSWORD=`

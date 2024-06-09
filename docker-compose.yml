@@ -1,9 +1,7 @@
-variables:
-  - DB_HOST=mysql
-  - DB_PORT=3306
-  - DB_NAME=revive_adserver_402
-  - DB_USERNAME=revive
-  - DB_PASSWORD=revive
+networks:
+  mynet:
+    name: mynet
+    driver: bridge
 
 services:
   revive:
