@@ -14,7 +14,7 @@ ENV DB_USERNAME="root"
 ENV DB_PASSWORD=""
 
 # Install mysql-client and php mysqli extension
-RUN apt-get update && apt-get -y install mysql-client \
+RUN apt-get update && apt-get -y install mariadb-client \
     && docker-php-source extract \
     && docker-php-ext-install mysqli \
     && docker-php-source delete \
