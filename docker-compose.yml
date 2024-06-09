@@ -18,9 +18,9 @@ services:
     - mysql
 
   mysql:
-    image: mariadb:latest
+    image: mariadb:11.0.6 #latest stable version
     environment:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
