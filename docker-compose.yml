@@ -3,6 +3,9 @@ networks:
     name: mynet
     driver: bridge
 
+volumes:
+  db-data:
+
 services:
   revive:
     build: ./revive-adserver
@@ -13,9 +16,11 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
     ports:
-    - 8081:80
+    - 8080:80
     links:
     - mysql
+    networks:
+      - mynet
 
   mysql:
     image: mariadb:11.0.6 #latest stable version
@@ -24,3 +29,7 @@ services:
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - mynet
