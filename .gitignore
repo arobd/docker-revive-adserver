@@ -5,6 +5,7 @@
 
 # User-specific stuff:
 .idea
+.env
 
 ## File-based project format:
 *.iws

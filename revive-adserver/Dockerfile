@@ -1,5 +1,5 @@
-FROM php:7.1-apache
-ARG REVIVE_VERSION="3.2.5"
+FROM php:8.1.29-apache-bookworm
+ARG REVIVE_VERSION="5.5.2"
 LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.vendor="ipunkt Business Solutions OHG" \
       org.label-schema.version="$REVIVE_VERSION" \
@@ -14,12 +14,12 @@ ENV DB_USERNAME="root"
 ENV DB_PASSWORD=""
 
 # Install mysql-client and php mysqli extension
-RUN apt-get update && apt-get -y install mysql-client \
+RUN apt-get update && apt-get -y install mariadb-client \
     && docker-php-source extract \
     && docker-php-ext-install mysqli \
     && docker-php-source delete \
     && rm -rf /var/lib/apt/lists/*
-
+    
 # Download Revive Adserver archive and decompress to /var/www/html
 RUN curl -sSL "https://download.revive-adserver.com/revive-adserver-$REVIVE_VERSION.tar.gz" \
     | tar xz --strip-components=1 \
