@@ -18,7 +18,7 @@ RUN apt-get update && apt-get -y install mariadb-client \
     && apt-get -y install libzip-dev zip \
     && docker-php-source extract \
     && docker-php-ext-configure zip \
-    && docker-php-ext-install mysqli \
+    && docker-php-ext-install zip mysqli \
     && docker-php-source delete \
     && rm -rf /var/lib/apt/lists/*
 
