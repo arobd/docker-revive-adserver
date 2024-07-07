@@ -21,8 +21,9 @@ RUN apt-get update && apt-get -y install mariadb-client \
     && rm -rf /var/lib/apt/lists/*
     
 # Download Revive Adserver archive and decompress to /var/www/html
-RUN curl -sSL "https://download.revive-adserver.com/revive-adserver-$REVIVE_VERSION.tar.gz" \
-    | tar xz --strip-components=1 \
+RUN curl -sSL "https://download.revive-adserver.com/revive-adserver-$REVIVE_VERSION.tar.gz" -o revive-adserver.tar.gz \
+    && file revive-adserver.tar.gz \
+    && tar xzf revive-adserver.tar.gz --strip-components=1 -C /var/www/html \
   	&& chmod -R a+w /var/www/html/var \
   	&& chmod -R a+w /var/www/html/var/cache \
   	&& chmod -R a+w /var/www/html/var/plugins \
